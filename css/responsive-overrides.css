@@ -1,0 +1,96 @@
+/* Simtrak Solutions: responsive overrides for desktop, tablet and mobile.
+   Load this file AFTER the existing page stylesheets on every HTML page. */
+
+:root {
+  --responsive-gutter: clamp(16px, 4vw, 48px);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { width: 100%; max-width: 100%; overflow-x: clip; }
+body { width: 100%; max-width: 100%; margin-inline: auto; overflow-wrap: break-word; }
+img, video, iframe, canvas, svg { max-width: 100%; }
+img, video { height: auto; }
+button, input, select, textarea { max-width: 100%; font: inherit; }
+input, select, textarea { min-width: 0; }
+pre, code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.container,
+.detail-container { width: min(calc(100% - (var(--responsive-gutter) * 2)), 1220px); margin-inline: auto; }
+
+/* Avoid fixed-width content pushing the viewport sideways. */
+main, section, header, footer, article, aside, nav, form { min-width: 0; }
+[class*="grid"],
+[class*="layout"],
+[class*="shell"],
+[class*="row"] { min-width: 0; }
+
+/* Inner-page shared header/footer and content layouts. */
+.detail-nav-inner,
+.detail-nav-links,
+.detail-menu,
+.design-clients .detail-container { flex-wrap: wrap; }
+.detail-nav-inner { gap: 14px; }
+.detail-nav-links, .detail-menu { gap: clamp(10px, 2vw, 22px); }
+.detail-brand { flex: 0 1 180px; max-width: 42vw; }
+.detail-footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .7fr) minmax(0, 1.2fr); }
+.detail-heading { grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); }
+.recruitment-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .82fr); }
+.impact-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.recruitment-results { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.workflow-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.work-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.recruitment-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bar-row { grid-template-columns: minmax(90px, 150px) minmax(0, 1fr) 38px; }
+.portfolio-shell { min-width: 0; }
+.portfolio-stage { max-width: 100%; }
+
+/* Careers and blog pages. */
+.career-editorial-grid,
+.career-list-shell,
+.role-grid,
+.article-detail-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); }
+.career-search-panel { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, .8fr) auto; }
+.article-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.article-card { min-width: 0; }
+.article-card-visual { min-width: 0; }
+.article-card-copy h2,
+.article-card-copy p { overflow-wrap: anywhere; }
+
+/* Tablet. */
+@media (max-width: 1024px) {
+  .container,
+  .detail-container { width: min(calc(100% - 40px), 1220px); }
+
+  .desktop-nav { gap: 0; }
+  .desktop-nav a { padding-inline: 9px; font-size: .86rem; }
+  .nav-shell { gap: 16px; }
+  .brand img { max-width: 100%; }
+
+  .detail-heading,
+  .recruitment-hero-grid,
+  .career-editorial-grid,
+  .career-list-shell,
+  .role-grid,
+  .article-detail-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .detail-heading { gap: 18px; }
+  .recruitment-visual { width: min(100%, 700px); margin-inline: auto; }
+  .impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .recruitment-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .workflow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .work-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .detail-footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .detail-footer-grid > :first-child { grid-column: 1 / -1; }
+  .career-search-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 24px; }
+  .career-results-head { margin-top: 36px; }
+  .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Mobile navigation, sections and cards. */
+@media (max-width: 760px) {
+  :root { --header-h: 66px; --responsive-gutter: 18px; }
+
+  .container,
+  .detail-container { width: calc(100% - 36px);}
